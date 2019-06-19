@@ -46,13 +46,18 @@ public class DriverInfoController {
 
         DriverInfoResponse response = new DriverInfoResponse(false);
 
-        if (firstName.isEmpty()|| lastName.isEmpty() ) responseEntityExceptionHelper
+        if (firstName.isEmpty()|| lastName.isEmpty() ) return responseEntityExceptionHelper
                 .getExceptionResponseEntity(ResponseEntityErrorType.FIRST_AND_LAST_NAME_NOT_PROVIDED, HttpStatus.BAD_REQUEST);
 
         List<DriverInformation> listOfDrivers = driverInfoRepository.findByFirstNameAndLastName(firstName, lastName);
 
-        if (listOfDrivers.size() == 0) responseEntityExceptionHelper
+        if (listOfDrivers == null)
+            return responseEntityExceptionHelper
                 .getExceptionResponseEntity(ResponseEntityErrorType.PERSON_NOT_FOUND, HttpStatus.BAD_REQUEST);
+
+        if (listOfDrivers.size() == 0)
+            return responseEntityExceptionHelper
+                    .getExceptionResponseEntity(ResponseEntityErrorType.PERSON_NOT_FOUND, HttpStatus.BAD_REQUEST);
 
         response.setSuccess(true);
         response.setDriverInformation(listOfDrivers.get(0));
