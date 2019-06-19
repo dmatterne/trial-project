@@ -3,6 +3,8 @@ package com.silvermoongroup.atossyntel.controller.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
         setterVisibility = JsonAutoDetect.Visibility.NONE
 )
 @JsonIgnoreProperties({"proxyTargetClass", "exposeProxy", "preFiltered", "frozen"})
+@Component
 public class ErrorResponse {
 
     private List<String> errors = new ArrayList<String>();
