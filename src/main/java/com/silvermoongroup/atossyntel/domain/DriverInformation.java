@@ -44,7 +44,7 @@ public class DriverInformation {
     private Integer nrOfAccidents;
 
     @Column(name = "LAST_ACC_VLTNS_DATE", nullable = false)
-    private Date progress;
+    private Date dateLastAccidentOrViolation;
 
     public DriverInformation() {
     }
@@ -52,12 +52,12 @@ public class DriverInformation {
     public DriverInformation(
             @Size(min = 2, max = 100, message = "Size must be between 2 and 100") String firstName,
             @Size(min = 2, max = 100, message = "Size must be between 2 and 100") String lastName,
-            Integer creditScore, Integer nrOfAccidents, Date progress) {
+            Integer creditScore, Integer nrOfAccidents, Date dateLastAccidentOrViolation) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.creditScore = creditScore;
         this.nrOfAccidents = nrOfAccidents;
-        this.progress = progress;
+        this.dateLastAccidentOrViolation = dateLastAccidentOrViolation;
     }
 
     public Long getId() {
@@ -100,11 +100,11 @@ public class DriverInformation {
         this.nrOfAccidents = nrOfAccidents;
     }
 
-    public Date getProgress() {
-        return progress;
+    public Date getDateLastAccidentOrViolation() {
+        return dateLastAccidentOrViolation;
     }
 
-    public void setProgress(Date progress) {
-        this.progress = progress;
+    public void setDateLastAccidentOrViolation(Date dateLastAccidentOrViolation) {
+        this.dateLastAccidentOrViolation = dateLastAccidentOrViolation;
     }
 }
